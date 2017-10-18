@@ -117,7 +117,10 @@ fi
 
 # verify system version
 case ${gSysVer} in
-
+10.13* ) gSysName="High Sierra"
+gSysFolder=kexts/10.11
+gSID=$(csrutil status)
+;;
 10.12* ) gSysName="Sierra"
 gSysFolder=kexts/10.11
 gSID=$(csrutil status)
@@ -168,7 +171,7 @@ if [ $gMake = 1 ]; then
         sudo rm -R "$gExtensionsDirectory/AppleHDA.kext"
     case $gSysName in
 
-    "Sierra"|"El Capitan" )
+    "High Sierra"|"Sierra"|"El Capitan" )
     sudo cp -X $gDesktopDirectory/AppleHDA.kext $gExtensionsDirectory/AppleHDA.kext
     ;;
 
@@ -234,7 +237,7 @@ if [ $gRealtekALC = 1 ]; then
 
         case $gSysName in
 
-        "Sierra"|"El Capitan" )
+        "High Sierra"|"Sierra"|"El Capitan" )
         echo $gSID > /tmp/gsid.txt
         if [[ $(cat /tmp/gsid.txt | grep -c "disabled") = 0 ]]; then
             rm -R /tmp/gsid.txt
@@ -278,7 +281,7 @@ if [ $gRealtekALC = 1 ]; then
 
     [yY]* )
         case $gSysName in
-        "Sierra"|"El Capitan" )
+        "High Sierra"|"Sierra"|"El Capitan" )
 
         echo $gSID > /tmp/gsid.txt
         if [[ $(cat /tmp/gsid.txt | grep -c "disabled") = 0 ]]; then
@@ -383,7 +386,7 @@ if [ $gEFI = 1 ]; then
 
         case $gSysName in
 
-        "Sierra"|"El Capitan" )
+        "High Sierra"|"Sierra"|"El Capitan" )
 	    echo $gSID > /tmp/gsid.txt
             if [[ $(cat /tmp/gsid.txt | grep -c "disabled") = 0 ]]; then
             rm -R /tmp/gsid.txt 
@@ -456,7 +459,7 @@ else
             cp -p "$gCloverDirectory/config.plist" "/tmp/config.txt"
             case $gSysName in
 
-            "Sierra"|"El Capitan" )
+            "High Sierra"|"Sierra"|"El Capitan" )
 	    	echo $gSID > /tmp/gsid.txt
         	if [[ $(cat /tmp/gsid.txt | grep -c "disabled") = 0 ]]; then
             	rm -R /tmp/gsid.txt 
@@ -1593,7 +1596,7 @@ fi    # end: if [ $gCloverALC = 1 ]
 if [ $gDebug = 0 ]; then
 case $gSysName in
 
-"Sierra"|"El Capitan"|"Yosemite" )
+"High Sierra"|"Sierra"|"El Capitan"|"Yosemite" )
 echo "Fix permissions ..."
 sudo chown -R root:wheel $gExtensionsDirectory/AppleHDA.kext
 echo "Kernel cache..."
