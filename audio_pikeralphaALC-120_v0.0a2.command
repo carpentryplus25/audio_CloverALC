@@ -1408,9 +1408,9 @@ sudo rm -R /tmp/config-audio_cloverALC.plist.zip
 if [ $gPikerAlphaALC = 1 ]; then
 
 # download AppleHDA8Series.sh to /tmp/
-echo "Download Piker-Alpha/AppleHDA8Series.sh"
+echo "Download carpentryplus25/AppleHDA8Series.sh"
 
-curl -o /tmp/AppleHDA8Series.zip https://codeload.github.com/Piker-Alpha/AppleHDA8Series.sh/zip/master
+curl -o /tmp/AppleHDA8Series.zip https://codeload.github.com/carpentryplus25/AppleHDA8Series.sh/zip/master
 if [ -d /tmp/AppleHDA8Series ]; then
     sudo rm -R /tmp/AppleHDA8Series
 fi
